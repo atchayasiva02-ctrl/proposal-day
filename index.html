@@ -1,145 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Proposal Day 💖</title>
+<meta charset="UTF-8">
+<title>Happy Chocolate Day 🤎</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    body {
-      height: 100vh;
-      margin: 0;
-      background: linear-gradient(135deg, #ffdde1, #ffeef3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* ===== BACKGROUND ===== */
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #5a2a27, #8b4513);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
 
-    .card {
-      background: #ffffff;
-      padding: 40px 30px;
-      border-radius: 18px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      text-align: center;
-      width: 90%;
-      max-width: 420px;
-    }
+/* ===== FLOATING HEARTS ===== */
+.heart {
+  position: absolute;
+  color: rgba(255, 182, 193, 0.7);
+  font-size: 20px;
+  animation: floatUp 8s linear infinite;
+}
 
-    h1 {
-      font-size: 26px;
-      color: #333;
-      margin-bottom: 10px;
-    }
+@keyframes floatUp {
+  0% { transform: translateY(100vh); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(-10vh); opacity: 0; }
+}
 
-    .proposal-text {
-      font-size: 15px;
-      color: #666;
-      margin-bottom: 30px;
-      line-height: 1.6;
-    }
+/* ===== MAIN BOX ===== */
+.box {
+  background: #fff;
+  width: 90%;
+  max-width: 420px;
+  padding: 30px;
+  border-radius: 22px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  animation: fadeIn 1.5s ease;
+}
 
-    .buttons {
-      position: relative;
-      height: 140px;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
 
-    button {
-      padding: 12px 28px;
-      font-size: 15px;
-      border: none;
-      border-radius: 25px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
+h1 {
+  font-size: 24px;
+  color: #4b2e2b;
+  margin-bottom: 12px;
+}
 
-    #yesBtn {
-      background: #ff4d6d;
-      color: white;
-    }
+p {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #5a2a27;
+}
 
-    #yesBtn:hover {
-      background: #e63956;
-      transform: scale(1.05);
-    }
+/* ===== CHOCOLATES ===== */
+.chocolates {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
 
-    #noBtn {
-      position: absolute;
-      background: #eaeaea;
-      color: #555;
-      top: 70px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  </style>
+.chocolate {
+  background: linear-gradient(145deg, #6f4e37, #4b2e2b);
+  color: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: 0.4s;
+  font-size: 14px;
+}
+
+.chocolate:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== FINAL MESSAGE ===== */
+.final {
+  margin-top: 22px;
+  font-size: 16px;
+  color: #4b2e2b;
+  animation: fadeUp 1.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="card">
-    <h1>
-      Hey My Love 💖<br>
-      
-    </h1>
+<!-- Floating hearts -->
+<script>
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDelay = Math.random() * 8 + "s";
+    heart.style.fontSize = (Math.random() * 12 + 14) + "px";
+    document.body.appendChild(heart);
+  }
+</script>
 
-    <p class="proposal-text">
-      From smiles to silence, from laughs to dreams,<br>
-      every moment with you feels like home.<br>
-      On this Proposal Day, I don’t want forever with anyone else…<br>
-      <b>Will you be mine? 💍✨</b>
-    </p>
+<div class="box">
+  <h1>For You, Pramooth 🤎</h1>
+  <p>
+    Chocolate melts slowly…  
+    just like the way my heart softened for you 💖  
+    Tap each chocolate.
+  </p>
 
-    <div class="buttons">
-      <button id="yesBtn" onclick="accepted()">YES 💖</button>
-      <button id="noBtn" onmouseover="escapeNo()">NO 😒</button>
-    </div>
+  <div class="chocolates">
+    <div class="chocolate" onclick="openChoco(this,1)">🍫 Tap me</div>
+    <div class="chocolate" onclick="openChoco(this,2)">🍫 Tap me</div>
+    <div class="chocolate" onclick="openChoco(this,3)">🍫 Tap me</div>
+    <div class="chocolate" onclick="openChoco(this,4)">🍫 Tap me</div>
   </div>
 
-  <script>
-    function escapeNo() {
-      const noBtn = document.getElementById("noBtn");
+  <div class="final hidden" id="finalMsg">
+    <p>
+      I may not hand you real chocolate today…  
+      but every piece of my heart belongs to you ❤️  
+      <br><br>
+      Happy Chocolate Day, my love 🍫  
+      <br>
+      — Atchaya 💖
+    </p>
+  </div>
+</div>
 
-      // random movement
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 80 - 40;
+<script>
+let count = 0;
 
-      // shrink effect
-      noBtn.style.transform = `translate(${x}px, ${y}px) scale(0.6)`;
+function openChoco(el, num) {
+  const messages = {
+    1: "You are my calm in every storm 🤍",
+    2: "Your presence is my sweetest comfort 🫂",
+    3: "Even ordinary days feel magical with you ✨",
+    4: "I choose you — always, endlessly ❤️"
+  };
 
-      // restore size after escaping
-      setTimeout(() => {
-        noBtn.style.transform = "translateX(-50%) scale(1)";
-      }, 300);
-    }
+  el.innerHTML = messages[num];
+  el.style.background = "#fff";
+  el.style.color = "#5a2a27";
+  el.style.cursor = "default";
+  el.onclick = null;
 
-    function accepted() {
-      document.body.innerHTML = `
-        <div style="
-          height:100vh;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          background:linear-gradient(135deg,#ff4d6d,#ff9a9e);
-          text-align:center;
-          font-family:'Segoe UI';
-          padding:20px;
-        ">
-          <div>
-            <h1 style="color:white;font-size:34px;">
-              HE SAID YES!!! 💖😍
-            </h1>
-            <p style="color:white;font-size:18px;">
-              Thank you for choosing me today and forever ❤️<br>
-              Happy Proposal Day 💍✨
-            </p>
-          </div>
-        </div>
-      `;
-    }
-  </script>
+  count++;
+  if (count === 4) {
+    document.getElementById("finalMsg").classList.remove("hidden");
+  }
+}
+</script>
 
 </body>
 </html>
